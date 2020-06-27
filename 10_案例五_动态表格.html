@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #commitText{
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #t_student{
+            margin-top: 50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--文本输入框-->
+    <div id = "commitText">
+        <form action="#" method="get">
+            <input type="text" id="id" placeholder="请输入id号码">
+            <input type="text" id="username" placeholder="请输入姓名">
+            <input type="text" id="sex" placeholder="请输入性别">
+
+        <!-- 提交按钮   -->
+            <input type="button" value="添加" id="btn_add">
+        </form>
+    </div>
+
+    <div id="t_student">
+        <table align="center" border="1px" width="50%">
+            <caption>学生信息表</caption>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        //获取文本框的内容
+
+        //1.1获取按钮对象
+        var add_bnt = document.getElementById("btn_add");
+        //2. 添加单击事件
+        add_bnt.onclick = function () {
+            //获取文本框的内容
+            var userid  = document.getElementById("id").value;
+            var username  = document.getElementById("username").value;
+            var usersex  = document.getElementById("sex").value;
+
+            // //创建td设置td的文本框的内容
+            // var td = document.createElement("td");
+            // var text = document.createTextNode(userid);
+            // td.appendChild(text);
+            //
+            // var name = document.createElement("td");
+            // var text = document.createTextNode(username);
+            // name.appendChild(text);
+            //
+            // var sex = document.createElement("td");
+            // var text = document.createTextNode(usersex); //创建文本节点
+            // sex.appendChild(text);
+            //
+            // //创建超链接标签
+            // var t_a = document.createElement("td");
+            // var a = document.createElement("a");
+            // a.setAttribute("href","#");
+            // a.innerHTML = "删除";
+            // a.setAttribute("onclick","delTr(this)")
+            // t_a.append(a);
+            //
+            // //创建tr
+            // var tr = document.createElement("tr");
+            // tr.appendChild(td);
+            // tr.appendChild(name);
+            // tr.appendChild(sex);
+            // tr.appendChild(t_a)
+            //
+            // //获取table属性
+            // var table = document.getElementsByTagName("table")[0];
+            // table.appendChild(tr);
+
+            //使用innerHtml
+            var table  = document.getElementsByTagName("table")[0];
+            table.innerHTML+="<tr>\n" +
+                "                <th>"+userid+"</th>\n" +
+                "                <th>"+username+"</th>\n" +
+                "                <th>"+userid+"</th>\n" +
+                "                <th><a href='#' onclick='delTr(this)'>删除</a></th>\n" +
+                "            </tr>"
+        }
+
+        function delTr(obj) {
+            var table = obj.parentNode.parentNode.parentNode;
+            var tr = obj.parentNode.parentNode;
+            table.removeChild(tr);
+        }
+
+
+
+
+
+    </script>
+
+</body>
+</html>
